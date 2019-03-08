@@ -5,6 +5,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const db = mongoose.connection
+const methodOverride = require('method-override')
 
 const app = express()
 
@@ -15,12 +16,13 @@ app.use(bodyParser.json())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 
 //-------------------------//
 //  Environment Variables  //
 //-------------------------//
 const port = process.env.PORT || 5000
-const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27107/wine"
+const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/" + "wine"
 
 //---------------------------//
 //  App Listener: Port 5000  //
