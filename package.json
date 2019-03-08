@@ -1,0 +1,25 @@
+{
+  "name": "vie_du_vin",
+  "version": "1.0.0",
+  "description": "Project 5 for GA",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r742davis/Project_5.git"
+  },
+  "author": "Richard Davis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/r742davis/Project_5/issues"
+  },
+  "homepage": "https://github.com/r742davis/Project_5#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.17"
+  }
+}
