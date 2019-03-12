@@ -13,16 +13,21 @@ const app = express()
 //  Middleware  //
 //--------------//
 app.use(bodyParser.json())
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
+
+//--------------------//
+//  Wines Controller  //
+//--------------------//
+const winesController = require('./controllers/wines.js')
+app.use('/wines', winesController)
 
 //-------------------------//
 //  Environment Variables  //
 //-------------------------//
 const port = process.env.PORT || 5000
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/" + "wine"
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/" + "wines"
 
 //---------------------------//
 //  App Listener: Port 5000  //
@@ -39,12 +44,5 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true },
 )
 //--Error Messages--//
 db.on('error', (err) => console.log(err.message + ' is mongod not running?'))
-db.on('connected', () => console.log('mongo connected: ', MONGODB_URI))
+db.on('connected', () => console.log('Mongo connected: ', MONGODB_URI))
 db.on('disconnected', () => console.log('mongo disconnected'))
-
-//------------------//
-//  Routes to Test  //
-//------------------//
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-})
