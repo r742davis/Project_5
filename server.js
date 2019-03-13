@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const db = mongoose.connection
 const methodOverride = require('method-override')
 const cors = require('cors')
+const config = require('config')
 
 const app = express()
 
@@ -25,11 +26,17 @@ app.use(methodOverride('_method'))
 const winesController = require('./controllers/wines.js')
 app.use('/wines', winesController)
 
+//--------------------//
+//  Users Controller  //
+//--------------------//
+const usersController = require('./controllers/users.js')
+app.use('/users', usersController)
+
 //-------------------------//
 //  Environment Variables  //
 //-------------------------//
 const port = process.env.PORT || 5000
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/" + "wines"
+const MONGODB_URI = process.env.MONGODB_URI || config.get('MONGODB_URI')
 
 //---------------------------//
 //  App Listener: Port 5000  //
@@ -41,7 +48,11 @@ app.listen(port, () => {
 //------------------------//
 //  Connect to Mongooose  //
 //------------------------//
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true },
+mongoose.connect(
+  MONGODB_URI,
+  { useNewUrlParser: true,
+    useCreateIndex: true
+  },
   () => { console.log('Mongoose connection established:', MONGODB_URI) }
 )
 //--Error Messages--//
