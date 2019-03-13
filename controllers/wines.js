@@ -8,10 +8,6 @@ router.get('/', (req, res) => {
       .then(wines => res.json(wines))
 })
 
-// router.get('/new', (req, res) => {
-//   res.render('new.ejs')
-// })
-
 // CREATE route
 router.post('/', (req, res) => {
     const newWine = new Wine({
