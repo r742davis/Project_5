@@ -6,16 +6,19 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const db = mongoose.connection
 const methodOverride = require('method-override')
+const cors = require('cors')
 
 const app = express()
 
 //--------------//
 //  Middleware  //
 //--------------//
+app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
+
 
 //--------------------//
 //  Wines Controller  //
