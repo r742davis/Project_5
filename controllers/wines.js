@@ -1,15 +1,17 @@
 const express = require('express')
 const router = express.Router()
+const auth = require('../middleware/auth')
+
 const Wine = require('../models/Wine.js')
 
 // GET all route
-router.get('/', (req, res) => {
+router.get('/', auth, (req, res) => {
     Wine.find()
       .then(wines => res.json(wines))
 })
 
 // CREATE route
-router.post('/', (req, res) => {
+router.post('/', auth, (req, res) => {
     const newWine = new Wine({
       name: req.body.name
     })
@@ -18,7 +20,7 @@ router.post('/', (req, res) => {
 })
 
 // DELETE route
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth, (req, res) => {
   Wine.findById(req.params.id)
     .then(wine => wine.remove().then(() => {
       res.json({ success: true})

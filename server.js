@@ -32,6 +32,12 @@ app.use('/wines', winesController)
 const usersController = require('./controllers/users.js')
 app.use('/users', usersController)
 
+//-------------------//
+//  Auth Controller  //
+//-------------------//
+const authController = require('./controllers/auth.js')
+app.use('/auth', authController)
+
 //-------------------------//
 //  Environment Variables  //
 //-------------------------//
