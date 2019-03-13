@@ -21,4 +21,14 @@ router.post('/', (req, res) => {
     newWine.save().then(wine => res.json(wine))
 })
 
+// DELETE route
+router.delete('/:id', (req, res) => {
+  Wine.findById(req.params.id)
+    .then(wine => wine.remove().then(() => {
+      res.json({ success: true})
+    }))
+    .catch(error => res.status(404).json({ success: false}))
+})
+
+
 module.exports = router;
