@@ -8,11 +8,11 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js",
+    "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/r742davis/Project_5.git"
+    "url": "git+https://github.com/r742davis/vie_du_vin_backend.git"
   },
   "author": "Richard Davis",
   "license": "ISC",
