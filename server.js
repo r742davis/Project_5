@@ -42,7 +42,7 @@ app.use('/auth', authController)
 //  Environment Variables  //
 //-------------------------//
 const port = process.env.PORT || 5000
-const MONGODB_URI = process.env.MONGODB_URI || config.get('MONGODB_URI')
+const MONGODB_URI = config.get('MONGODB_URI')
 
 //---------------------------//
 //  App Listener: Port 5000  //
