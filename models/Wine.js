@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 // Create Schema for Wine
 const WineSchema = new Schema({
@@ -10,30 +10,27 @@ const WineSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  type: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
   }
   // ,
-  // type: {
-  //   type: String,
-  //   required: true
-  // },
-  // price: {
-  //   type: Number,
-  //   required: true
-  // },
   // region: {
   //   type: String
   // },
-  // alcoholPercentage: {
-  //   type: Number,
-  //   required: true
+  // alcoholPercent: {
+  //   type: Number
   // },
   // vintage: {
-  //   type: Number,
-  //   required: true
+  //   type: Number
   // },
   // producer: {
-  //   type: String,
-  //   required: true
+  //   type: String
   // },
   // reserve: {
   //   type: Boolean
@@ -46,9 +43,6 @@ const WineSchema = new Schema({
   // },
   // grape: {
   //   type: String
-  // },
-  // wineScore: {
-  //   type: Number
   // }
 })
 

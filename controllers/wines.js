@@ -28,5 +28,7 @@ router.delete('/:id', auth, (req, res) => {
     .catch(error => res.status(404).json({ success: false}))
 })
 
+//EDIT route - Need to Add
+
 
 module.exports = router;
