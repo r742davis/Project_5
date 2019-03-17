@@ -12,12 +12,10 @@ const WineSchema = new Schema({
     default: Date.now
   },
   type: {
-    type: String,
-    required: true
+    type: String
   },
   price: {
-    type: Number,
-    required: true
+    type: Number
   }
   // ,
   // region: {
