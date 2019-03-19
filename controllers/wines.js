@@ -38,31 +38,31 @@ router.get('/:id', auth, (req, res) => {
 })
 
 //EDIT route - Need to TEST
-router.put('/:id', (req, res) => {
-  Wine.findByIdAndUpdate(req.params.id, (err, wine) => {
-    if (!wine) {
-      res.status(404).send('Wine was not found. Please try again');
-    } else {
-      wine.name = req.body.name,
-      wine.type = req.body.type,
-      wine.price = req.body.price
-
-      wine.save().then(wine => {
-        res.json('Wine updated successfully!')
-      })
-      .catch(err => {
-        res.status(400).send('Update was not successful.')
-      })
-    }
-  })
-})
-
-//UPDATE route
-// router.put('/:id', auth, (req, res) => {
-//   Wine.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedWine) => {
-//     res.redirect('/wines')
+// router.put('/:id', (req, res) => {
+//   Wine.findByIdAndUpdate(req.params.id, (err, wine) => {
+//     if (!wine) {
+//       res.status(404).send('Wine was not found. Please try again');
+//     } else {
+//       wine.name = req.body.name,
+//       wine.type = req.body.type,
+//       wine.price = req.body.price
+//
+//       wine.save().then(wine => {
+//         res.json('Wine updated successfully!')
+//       })
+//       .catch(err => {
+//         res.status(400).send('Update was not successful.')
+//       })
+//     }
 //   })
 // })
+
+//UPDATE route
+router.put('/:id', (req, res) => {
+  Wine.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedWine) => {
+    res.redirect('/')
+  })
+})
 
 
 module.exports = router;
