@@ -60,7 +60,7 @@ router.get('/:id', auth, (req, res) => {
 //UPDATE route
 router.put('/:id', (req, res) => {
   Wine.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedWine) => {
-    res.redirect('/wines')
+    res.send(updatedWine)
   })
 })
 
