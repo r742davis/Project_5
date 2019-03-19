@@ -30,6 +30,15 @@ router.delete('/:id', auth, (req, res) => {
     .catch(error => res.status(404).json({ success: false}))
 })
 
+//SHOW route
+router.get('/:id', auth, (req, res) => {
+  Wine.findById(req.params.id, (err, foundWine) => {
+    res.send(foundWine)
+  })
+})
+
+
+
 //EDIT route - Need to TEST
 router.get('/edit/:id', auth, (req, res) => {
   Wine.findById(req.params.id, (err, wine) => {
