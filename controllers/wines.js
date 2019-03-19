@@ -30,8 +30,8 @@ router.delete('/:id', auth, (req, res) => {
     .catch(error => res.status(404).json({ success: false}))
 })
 
-//EDIT route - Need to Add
-router.get('/:id/edit', auth, (req, res) => {
+//EDIT route - Need to TEST
+router.get('/edit/:id', auth, (req, res) => {
   Wine.findById(req.params.id, (err, wine) => {
     if (!wine) {
       res.status(404).send('Wine was not found. Please try again');
@@ -49,6 +49,13 @@ router.get('/:id/edit', auth, (req, res) => {
     }
   })
 })
+
+//UPDATE route
+// router.put('/:id', auth, (req, res) => {
+//   Wine.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedWine) => {
+//     res.redirect('/wines')
+//   })
+// })
 
 
 module.exports = router;
