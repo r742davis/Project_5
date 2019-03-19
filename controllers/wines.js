@@ -38,7 +38,7 @@ router.get('/:id', auth, (req, res) => {
 })
 
 //EDIT route - Need to TEST
-router.put('/:id', auth, (req, res) => {
+router.put('/:id', (req, res) => {
   Wine.findByIdAndUpdate(req.params.id, (err, wine) => {
     if (!wine) {
       res.status(404).send('Wine was not found. Please try again');
