@@ -13,7 +13,9 @@ router.get('/', auth, (req, res) => {
 // CREATE route
 router.post('/', auth, (req, res) => {
     const newWine = new Wine({
-      name: req.body.name
+      name: req.body.name,
+      type: req.body.type,
+      price: req.body.price
     })
 
     newWine.save().then(wine => res.json(wine))
@@ -29,6 +31,24 @@ router.delete('/:id', auth, (req, res) => {
 })
 
 //EDIT route - Need to Add
+router.get('/:id/edit', auth, (req, res) => {
+  Wine.findById(req.params.id, (err, wine) => {
+    if (!wine) {
+      res.status(404).send('Wine was not found. Please try again');
+    } else {
+      wine.name = req.body.name,
+      wine.type = req.body.type,
+      wine.price = req.body.price
+
+      wine.save().then(wine => {
+        res.json('Wine updated successfully!')
+      })
+      .catch(err => {
+        res.status(400).send('Update was not successful.')
+      })
+    }
+  })
+})
 
 
 module.exports = router;
