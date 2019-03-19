@@ -37,11 +37,9 @@ router.get('/:id', auth, (req, res) => {
   })
 })
 
-
-
 //EDIT route - Need to TEST
-router.get('/edit/:id', auth, (req, res) => {
-  Wine.findById(req.params.id, (err, wine) => {
+router.put('/:id', auth, (req, res) => {
+  Wine.findByIdAndUpdate(req.params.id, (err, wine) => {
     if (!wine) {
       res.status(404).send('Wine was not found. Please try again');
     } else {
