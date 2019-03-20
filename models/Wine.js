@@ -16,6 +16,9 @@ const WineSchema = new Schema({
   },
   price: {
     type: Number
+  },
+  ownerId: {
+    type: String
   }
   // ,
   // region: {

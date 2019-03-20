@@ -15,7 +15,8 @@ router.post('/', auth, (req, res) => {
     const newWine = new Wine({
       name: req.body.name,
       type: req.body.type,
-      price: req.body.price
+      price: req.body.price,
+      ownerId: req.body.ownerId
     })
 
     newWine.save().then(wine => res.json(wine))
