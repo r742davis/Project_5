@@ -3,7 +3,11 @@ const jwt = require('jsonwebtoken')
 
 //Always call 3 parameters
 function auth(req, res, next) {
-  const token = req.header('x-auth-token')
+  const token = req.header('x-auth-token') || req.header('Authorization')
+
+  if (token.startsWith('Bearer ')) {
+    token = token.slice(7, token.length)
+  }
 
   //Check for token
   if(!token) {
