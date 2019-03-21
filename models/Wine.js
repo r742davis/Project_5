@@ -19,32 +19,25 @@ const WineSchema = new Schema({
   },
   ownerId: {
     type: String
+  },
+  region: {
+    type: String
+  },
+  alcoholPercent: {
+    type: Number
+  },
+  vintage: {
+    type: Number
+  },
+  producer: {
+    type: String
+  },
+  tastingNotes: {
+    type: String
+  },
+  grape: {
+    type: String
   }
-  // ,
-  // region: {
-  //   type: String
-  // },
-  // alcoholPercent: {
-  //   type: Number
-  // },
-  // vintage: {
-  //   type: Number
-  // },
-  // producer: {
-  //   type: String
-  // },
-  // reserve: {
-  //   type: Boolean
-  // },
-  // estate: {
-  //   type: Boolean
-  // },
-  // tastingNotes: {
-  //   type: String
-  // },
-  // grape: {
-  //   type: String
-  // }
 })
 
 const Wine = mongoose.model('Wine', WineSchema)

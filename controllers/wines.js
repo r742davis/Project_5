@@ -16,7 +16,13 @@ router.post('/', auth, (req, res) => {
       name: req.body.name,
       type: req.body.type,
       price: req.body.price,
-      ownerId: req.body.ownerId
+      ownerId: req.body.ownerId,
+      region: req.body.region,
+      vintage: req.body.vintage,
+      producer: req.body.producer,
+      alcoholPercent: req.body.alcoholPercent,
+      tastingNotes: req.body.tastingNotes,
+      grape: req.body.grape
     })
 
     newWine.save().then(wine => res.json(wine))
